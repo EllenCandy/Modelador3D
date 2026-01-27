@@ -31,6 +31,45 @@ Matriz4x4 translacao(float tx, float ty, float tz) {
     return res;
 }
 
+Matriz4x4 rotacaoX(float angle) {
+    Matriz4x4 res = identidade();
+    float c = cos(angle);
+    float s = sin(angle);
+
+    res.m[1][1] = c;
+    res.m[1][2] = -s;
+    res.m[2][1] = s;
+    res.m[2][2] = c;
+
+    return res;
+}
+
+Matriz4x4 rotacaoY(float angle) {
+    Matriz4x4 res = identidade();
+    float c = cos(angle);
+    float s = sin(angle);
+
+    res.m[0][0] = c;
+    res.m[0][2] = s;
+    res.m[2][0] = -s;
+    res.m[2][2] = c;
+
+    return res;
+}
+
+Matriz4x4 rotacaoZ(float angle) {
+    Matriz4x4 res = identidade();
+    float c = cos(angle);
+    float s = sin(angle);
+
+    res.m[0][0] = c;
+    res.m[0][1] = -s;
+    res.m[1][0] = s;
+    res.m[1][1] = c;
+
+    return res;
+}
+
 Matriz4x4 escala(float sx, float sy, float sz) {
     Matriz4x4 res = identidade();
     res.m[0][0] = sx; res.m[1][1] = sy; res.m[2][2] = sz;
