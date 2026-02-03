@@ -3,6 +3,7 @@
 #include "math.hpp"
 #include "pipeline.hpp"
 #include <iostream>
+#include "cubo.hpp"
 
 #include <GLFW/glfw3.h>
 
