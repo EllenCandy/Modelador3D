@@ -75,3 +75,32 @@ Matriz4x4 escala(float sx, float sy, float sz) {
     res.m[0][0] = sx; res.m[1][1] = sy; res.m[2][2] = sz;
     return res;
 }
+
+Vec3 add(Vec3 a, Vec3 b) {
+    return { a.x + b.x, a.y + b.y, a.z + b.z };
+}
+
+Vec3 sub(Vec3 a, Vec3 b) {
+    return { a.x - b.x, a.y - b.y, a.z - b.z };
+}
+
+float dot(Vec3 a, Vec3 b) {
+    return a.x*b.x + a.y*b.y + a.z*b.z;
+}
+
+Vec3 cross(Vec3 a, Vec3 b) {
+    return {
+        a.y*b.z - a.z*b.y,
+        a.z*b.x - a.x*b.z,
+        a.x*b.y - a.y*b.x
+    };
+}
+
+float length(Vec3 v) {
+    return std::sqrt(dot(v, v));
+}
+
+Vec3 normalize(Vec3 v) {
+    float len = length(v);
+    return { v.x/len, v.y/len, v.z/len };
+}

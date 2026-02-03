@@ -55,7 +55,7 @@ void transformPoint(Matriz4x4 m, float pin[4], float pout[4]) {
 }
 
 int pipeline() {
-    // 1. Parâmetros da Planilha
+    // tornar editável pelo usuário
     Vec3 VRP = {30, 40, 100};
     Vec3 P = {1, 2, 1};
     Vec3 Y_up = {0, 1, 0};
