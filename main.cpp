@@ -1,8 +1,10 @@
 // André Ellen Rafael
 
-#include "math.cpp"
-#include "pipeline.cpp"
+#include "math.hpp"
+#include "pipeline.hpp"
 #include <iostream>
+
+#include <GLFW/glfw3.h>
 
 /*
 Inicializa
@@ -33,6 +35,41 @@ window / viewport
 
 int main() {
 
+    if (!glfwInit()) {
+        std::cout << "Erro ao iniciar GLFW\n";
+        return -1;
+    }
+
+    GLFWwindow* window = glfwCreateWindow(800, 600, "CG - Modelador 3D", NULL, NULL);
+    if (!window) {
+        glfwTerminate();
+        return -1;
+    }
+
+    const int W = 800;
+    const int H = 600;
+
+    unsigned char framebuffer[H][W][3];
+
+    glfwMakeContextCurrent(window);
+
+    while (!glfwWindowShouldClose(window)) {
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        framebuffer[300][400][0] = 255;
+        framebuffer[300][400][1] = 0;
+        framebuffer[300][400][2] = 0;
+
+        glDrawPixels(W, H, GL_RGB, GL_UNSIGNED_BYTE, framebuffer);
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+
+
+    glfwTerminate();
+
+/*
     inicializaJanela(largura, altura);
     inicializaBuffers(largura, altura);
 
@@ -56,6 +93,7 @@ int main() {
 
       desenhaFramebuffer();
     }
+*/
 
 return 0;
 

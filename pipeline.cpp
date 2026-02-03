@@ -2,13 +2,11 @@
 #include <vector>
 #include <cmath>
 #include <iomanip>
+#include "pipeline.hpp"
 
 using namespace std;
 
-struct Vec3 {
-    double x, y, z;
-};
-
+/*
 struct Matriz4x4 {
     double m[4][4] = {0};
     
@@ -18,12 +16,13 @@ struct Matriz4x4 {
         return res;
     }
 };
+*/
 
 //funções matematicas de vetores
 Vec3 subtract(Vec3 a, Vec3 b) { return {a.x - b.x, a.y - b.y, a.z - b.z}; }
-double length(Vec3 v) { return sqrt(v.x*v.x + v.y*v.y + v.z*v.z); }
+float length(Vec3 v) { return sqrt(v.x*v.x + v.y*v.y + v.z*v.z); }
 Vec3 normalize(Vec3 v) {
-    double len = length(v);
+    float len = length(v);
     return {v.x/len, v.y/len, v.z/len};
 }
 Vec3 cross(Vec3 a, Vec3 b) {
@@ -41,7 +40,7 @@ Matriz4x4 multiply(Matriz4x4 a, Matriz4x4 b) {
 }
 
 // Transformação de Ponto por Matriz
-void transformPoint(Matriz4x4 m, double pin[4], double pout[4]) {
+void transformPoint(Matriz4x4 m, float pin[4], float pout[4]) {
     for (int i = 0; i < 4; i++) {
         pout[i] = 0;
         for (int j = 0; j < 4; j++)
@@ -55,7 +54,7 @@ void transformPoint(Matriz4x4 m, double pin[4], double pout[4]) {
     }
 }
 
-int main() {
+int pipeline() {
     // 1. Parâmetros da Planilha
     Vec3 VRP = {30, 40, 100};
     Vec3 P = {1, 2, 1};
@@ -70,26 +69,26 @@ int main() {
     Vec3 v = cross(n, u);
 
     // Matriz A
-    Matriz4x4 A = Matriz4x4::identidade();
+    Matriz4x4 A = identidade();
     A.m[0][3] = -VRP.x;
     A.m[1][3] = -VRP.y;
     A.m[2][3] = -VRP.z;
 
     // Matriz B
-    Matriz4x4 B = Matriz4x4::identidade();
+    Matriz4x4 B = identidade();
     B.m[0][0] = u.x; B.m[0][1] = u.y; B.m[0][2] = u.z;
     B.m[1][0] = v.x; B.m[1][1] = v.y; B.m[1][2] = v.z;
     B.m[2][0] = n.x; B.m[2][1] = n.y; B.m[2][2] = n.z;
 
     // Matriz P
-    Matriz4x4 P_mat = Matriz4x4::identidade();
+    Matriz4x4 P_mat = identidade();
     P_mat.m[2][2] = Far / (Far - Near);
     P_mat.m[2][3] = -(Far * Near) / (Far - Near);
     P_mat.m[3][2] = 1.0; 
     P_mat.m[3][3] = 0.0;
 
     // Matriz S
-    Matriz4x4 S = Matriz4x4::identidade();
+    Matriz4x4 S = identidade();
     double scaleX = (umax - umin) / (xmax - xmin);
     double scaleY = (vmax - vmin) / (ymax - ymin);
     S.m[0][0] = scaleX;
@@ -100,7 +99,7 @@ int main() {
     Matriz4x4 finalMatriz = multiply(S, multiply(P_mat, multiply(B, A)));
 
     // pontos para Transformar
-    double pontos[5][4] = {
+    float pontos[5][4] = {
         {-2, -1, 4, 1},  // A
         {3, -2, 5, 1},   // B
         {4, -1, -2, 1},  // C
@@ -112,7 +111,7 @@ int main() {
     cout << " Resultado da transformação " << endl;
     char labels[] = {'A', 'B', 'C', 'D', 'E'};
     for(int i=0; i<5; i++) {
-        double out[4];
+        float out[4];
         transformPoint(finalMatriz, pontos[i], out);
         cout << labels[i] << ": (" << out[0] << ", " << out[1] << ", " << out[2] << ")" << endl;
     }

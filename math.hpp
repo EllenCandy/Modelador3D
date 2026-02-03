@@ -1,13 +1,16 @@
 #ifndef MATH_HPP
 #define MATH_HPP
 
-#include <vector>
+struct Vec3 {
+    float x, y, z;
+};
 
-//pontos e vetores no SRU
 struct Vec4 {
     float x, y, z, h;
 };
 
+
+/*
 struct Material {
     float Ka; //luz ambiente
     float Kd; //reflexão difusa
@@ -15,6 +18,7 @@ struct Material {
     float m;  //brilho (m)
     float r, g, b;
 };
+*/
 
 struct Matriz4x4 {
     float m[4][4];
