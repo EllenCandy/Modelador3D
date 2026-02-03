@@ -54,6 +54,14 @@ int main() {
 
     glfwMakeContextCurrent(window);
 
+    for(int y=0; y<H; y++)
+        for(int x=0; x<W; x++) {
+            framebuffer[y][x][0] = 0;
+            framebuffer[y][x][1] = 0;
+            framebuffer[y][x][2] = 0;
+        }
+
+
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
 

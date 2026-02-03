@@ -3,6 +3,7 @@
 #include <cmath>
 #include <iomanip>
 #include "pipeline.hpp"
+#include "math.hpp"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ struct Matriz4x4 {
 };
 */
 
-//funções matematicas de vetores
+/*funções matematicas de vetores
 Vec3 subtract(Vec3 a, Vec3 b) { return {a.x - b.x, a.y - b.y, a.z - b.z}; }
 float length(Vec3 v) { return sqrt(v.x*v.x + v.y*v.y + v.z*v.z); }
 Vec3 normalize(Vec3 v) {
@@ -28,6 +29,7 @@ Vec3 normalize(Vec3 v) {
 Vec3 cross(Vec3 a, Vec3 b) {
     return {a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x};
 }
+*/
 
 //multiplicacao de matrizes (R = A * B)
 Matriz4x4 multiply(Matriz4x4 a, Matriz4x4 b) {
@@ -64,7 +66,7 @@ int pipeline() {
     double umin = 100, umax = 1000, vmin = 300, vmax = 900;
     double Near = 20, Far = 160;
 
-    Vec3 n = normalize(subtract(VRP, P));
+    Vec3 n = normalize(sub(VRP, P));
     Vec3 u = normalize(cross(Y_up, n));
     Vec3 v = cross(n, u);
 
