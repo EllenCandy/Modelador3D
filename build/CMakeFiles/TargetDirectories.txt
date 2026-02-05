@@ -1,0 +1,3 @@
+/home/ellencandy/Área de trabalho/cgtrabalho/build/CMakeFiles/MeuProjetoOpenGL.dir
+/home/ellencandy/Área de trabalho/cgtrabalho/build/CMakeFiles/edit_cache.dir
+/home/ellencandy/Área de trabalho/cgtrabalho/build/CMakeFiles/rebuild_cache.dir
