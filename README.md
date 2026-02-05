@@ -6,3 +6,10 @@ uso:
 
 > cg ou ./cg
 
+uso cmake
+
+> cd build
+
+> cmake ..
+
+> ./execucaoCG (eu acho)
