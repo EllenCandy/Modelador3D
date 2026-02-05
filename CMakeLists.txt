@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(execucaoCG)
+project(MeuProjetoOpenGL)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -14,6 +14,10 @@ include_directories(include)
 set(SOURCES 
     main.cpp 
     glad.c
+    pipeline.cpp
+    math.cpp
+    cubo.cpp
+    scene.cpp 
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

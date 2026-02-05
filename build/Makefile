@@ -129,6 +129,30 @@ MeuProjetoOpenGL/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/build
 .PHONY : MeuProjetoOpenGL/fast
 
+cubo.o: cubo.cpp.o
+.PHONY : cubo.o
+
+# target to build an object file
+cubo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.o
+.PHONY : cubo.cpp.o
+
+cubo.i: cubo.cpp.i
+.PHONY : cubo.i
+
+# target to preprocess a source file
+cubo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.i
+.PHONY : cubo.cpp.i
+
+cubo.s: cubo.cpp.s
+.PHONY : cubo.s
+
+# target to generate assembly for a file
+cubo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.s
+.PHONY : cubo.cpp.s
+
 glad.o: glad.c.o
 .PHONY : glad.o
 
@@ -177,6 +201,78 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+math.o: math.cpp.o
+.PHONY : math.o
+
+# target to build an object file
+math.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.o
+.PHONY : math.cpp.o
+
+math.i: math.cpp.i
+.PHONY : math.i
+
+# target to preprocess a source file
+math.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.i
+.PHONY : math.cpp.i
+
+math.s: math.cpp.s
+.PHONY : math.s
+
+# target to generate assembly for a file
+math.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.s
+.PHONY : math.cpp.s
+
+pipeline.o: pipeline.cpp.o
+.PHONY : pipeline.o
+
+# target to build an object file
+pipeline.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.o
+.PHONY : pipeline.cpp.o
+
+pipeline.i: pipeline.cpp.i
+.PHONY : pipeline.i
+
+# target to preprocess a source file
+pipeline.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.i
+.PHONY : pipeline.cpp.i
+
+pipeline.s: pipeline.cpp.s
+.PHONY : pipeline.s
+
+# target to generate assembly for a file
+pipeline.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.s
+.PHONY : pipeline.cpp.s
+
+scene.o: scene.cpp.o
+.PHONY : scene.o
+
+# target to build an object file
+scene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.o
+.PHONY : scene.cpp.o
+
+scene.i: scene.cpp.i
+.PHONY : scene.i
+
+# target to preprocess a source file
+scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.i
+.PHONY : scene.cpp.i
+
+scene.s: scene.cpp.s
+.PHONY : scene.s
+
+# target to generate assembly for a file
+scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MeuProjetoOpenGL.dir/build.make CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.s
+.PHONY : scene.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -186,12 +282,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... MeuProjetoOpenGL"
+	@echo "... cubo.o"
+	@echo "... cubo.i"
+	@echo "... cubo.s"
 	@echo "... glad.o"
 	@echo "... glad.i"
 	@echo "... glad.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... math.o"
+	@echo "... math.i"
+	@echo "... math.s"
+	@echo "... pipeline.o"
+	@echo "... pipeline.i"
+	@echo "... pipeline.s"
+	@echo "... scene.o"
+	@echo "... scene.i"
+	@echo "... scene.s"
 .PHONY : help
 
 

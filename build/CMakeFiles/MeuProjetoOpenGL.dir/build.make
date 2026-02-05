@@ -97,21 +97,85 @@ CMakeFiles/MeuProjetoOpenGL.dir/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/MeuProjetoOpenGL.dir/glad.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/ellencandy/Área de trabalho/cgtrabalho/glad.c" -o CMakeFiles/MeuProjetoOpenGL.dir/glad.c.s
 
+CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.o: CMakeFiles/MeuProjetoOpenGL.dir/flags.make
+CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.o: /home/ellencandy/Área\ de\ trabalho/cgtrabalho/pipeline.cpp
+CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.o: CMakeFiles/MeuProjetoOpenGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ellencandy/Área de trabalho/cgtrabalho/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.o -MF CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.o.d -o CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.o -c "/home/ellencandy/Área de trabalho/cgtrabalho/pipeline.cpp"
+
+CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ellencandy/Área de trabalho/cgtrabalho/pipeline.cpp" > CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.i
+
+CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ellencandy/Área de trabalho/cgtrabalho/pipeline.cpp" -o CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.s
+
+CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.o: CMakeFiles/MeuProjetoOpenGL.dir/flags.make
+CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.o: /home/ellencandy/Área\ de\ trabalho/cgtrabalho/math.cpp
+CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.o: CMakeFiles/MeuProjetoOpenGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ellencandy/Área de trabalho/cgtrabalho/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.o -MF CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.o.d -o CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.o -c "/home/ellencandy/Área de trabalho/cgtrabalho/math.cpp"
+
+CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ellencandy/Área de trabalho/cgtrabalho/math.cpp" > CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.i
+
+CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ellencandy/Área de trabalho/cgtrabalho/math.cpp" -o CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.s
+
+CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.o: CMakeFiles/MeuProjetoOpenGL.dir/flags.make
+CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.o: /home/ellencandy/Área\ de\ trabalho/cgtrabalho/cubo.cpp
+CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.o: CMakeFiles/MeuProjetoOpenGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ellencandy/Área de trabalho/cgtrabalho/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.o -MF CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.o.d -o CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.o -c "/home/ellencandy/Área de trabalho/cgtrabalho/cubo.cpp"
+
+CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ellencandy/Área de trabalho/cgtrabalho/cubo.cpp" > CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.i
+
+CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ellencandy/Área de trabalho/cgtrabalho/cubo.cpp" -o CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.s
+
+CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.o: CMakeFiles/MeuProjetoOpenGL.dir/flags.make
+CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.o: /home/ellencandy/Área\ de\ trabalho/cgtrabalho/scene.cpp
+CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.o: CMakeFiles/MeuProjetoOpenGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ellencandy/Área de trabalho/cgtrabalho/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.o -MF CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.o.d -o CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.o -c "/home/ellencandy/Área de trabalho/cgtrabalho/scene.cpp"
+
+CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ellencandy/Área de trabalho/cgtrabalho/scene.cpp" > CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.i
+
+CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ellencandy/Área de trabalho/cgtrabalho/scene.cpp" -o CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.s
+
 # Object files for target MeuProjetoOpenGL
 MeuProjetoOpenGL_OBJECTS = \
 "CMakeFiles/MeuProjetoOpenGL.dir/main.cpp.o" \
-"CMakeFiles/MeuProjetoOpenGL.dir/glad.c.o"
+"CMakeFiles/MeuProjetoOpenGL.dir/glad.c.o" \
+"CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.o" \
+"CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.o" \
+"CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.o" \
+"CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.o"
 
 # External object files for target MeuProjetoOpenGL
 MeuProjetoOpenGL_EXTERNAL_OBJECTS =
 
 MeuProjetoOpenGL: CMakeFiles/MeuProjetoOpenGL.dir/main.cpp.o
 MeuProjetoOpenGL: CMakeFiles/MeuProjetoOpenGL.dir/glad.c.o
+MeuProjetoOpenGL: CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.o
+MeuProjetoOpenGL: CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.o
+MeuProjetoOpenGL: CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.o
+MeuProjetoOpenGL: CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.o
 MeuProjetoOpenGL: CMakeFiles/MeuProjetoOpenGL.dir/build.make
 MeuProjetoOpenGL: /usr/lib/x86_64-linux-gnu/libGL.so
 MeuProjetoOpenGL: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
 MeuProjetoOpenGL: CMakeFiles/MeuProjetoOpenGL.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/ellencandy/Área de trabalho/cgtrabalho/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable MeuProjetoOpenGL"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/ellencandy/Área de trabalho/cgtrabalho/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable MeuProjetoOpenGL"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MeuProjetoOpenGL.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
