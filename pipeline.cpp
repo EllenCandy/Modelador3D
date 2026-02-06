@@ -83,8 +83,8 @@ Matriz4x4 calculaMatrizPipeline(CameraConfig c) {
 
     // Matriz S
     Matriz4x4 S = identidade();
-    double scaleX = (c.umax - c.umin) / (c.xmax - c.xmin);
-    double scaleY = (c.vmax - c.vmin) / (c.ymax - c.ymin);
+    float scaleX = (c.umax - c.umin) / (c.xmax - c.xmin);
+    float scaleY = (c.vmax - c.vmin) / (c.ymax - c.ymin);
     S.m[0][0] = scaleX;
     S.m[0][3] = c.umin - (scaleX * c.xmin);
     S.m[1][1] = -scaleY; // Inversão Y 
@@ -93,6 +93,9 @@ Matriz4x4 calculaMatrizPipeline(CameraConfig c) {
     return multiply(S, multiply(P_mat, multiply(B, A)));
 }
 
+Matriz4x4 calculaMatrizPipeline(CameraConfig c);
+
+/*
 int pipeline() {
     CameraConfig cam;
 
@@ -102,7 +105,7 @@ int pipeline() {
     cam.Y_up = {0, 1, 0};
     
     cam.xmin = -10, cam.xmax = 10, cam.ymin = -8, cam.ymax = 8;
-    cam.umin = 100, cam.umax = 1000, cam.vmin = 300, cam.vmax = 900;
+    cam.umin = 0, cam.umax = 800, cam.vmin = 0, cam.vmax = 600;
     cam.Near = 20, cam.Far = 160;
 
     Matriz4x4 finalMatriz = calculaMatrizPipeline(cam);
@@ -127,3 +130,5 @@ int pipeline() {
 
     return 0;
 }
+
+*/

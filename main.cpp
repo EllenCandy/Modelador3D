@@ -1,11 +1,13 @@
 // André Ellen Rafael
 
 // #include <glad/glad.h>
+
+#include <iostream>
+
 #include <GLFW/glfw3.h>
 
-#include "pipeline.hpp"
 #include "math.hpp"
-#include <iostream>
+#include "pipeline.hpp"
 #include "cubo.hpp"
 #include "scene.hpp"
 
@@ -57,10 +59,10 @@ int main() {
     unsigned char framebuffer[H][W][3];
 
     Cena cena = criaCena();
-
     CameraConfig cam;
-
     Matriz4x4 finalMatriz = calculaMatrizPipeline(cam);
+
+    framebuffer[300][400][0] = 255;
 
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);

@@ -33,6 +33,7 @@ Matriz4x4 rotacaoX(float angle);
 Matriz4x4 rotacaoY(float angle);
 Matriz4x4 rotacaoZ(float angle);
 Matriz4x4 escala(float s); 
+Matriz4x4 escala(float sx, float sy, float sz);
 
 Vec3 add(Vec3 a, Vec3 b);
 Vec3 sub(Vec3 a, Vec3 b);

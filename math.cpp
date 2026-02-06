@@ -102,5 +102,6 @@ float length(Vec3 v) {
 
 Vec3 normalize(Vec3 v) {
     float len = length(v);
+    if (len == 0) return {0, 0, 0};
     return { v.x/len, v.y/len, v.z/len };
 }
