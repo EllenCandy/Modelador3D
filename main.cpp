@@ -1,6 +1,6 @@
 // André Ellen Rafael
 
-#include <glad/glad.h>
+// #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include "pipeline.hpp"
@@ -50,11 +50,6 @@ int main() {
     }
 
     glfwMakeContextCurrent(window);
-
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        std::cout << "Falha ao inicializar GLAD" << std::endl;
-        return -1;
-    }
 
     const int W = 800;
     const int H = 600;

@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/MeuProjetoOpenGL.dir/main.cpp.o CMakeFiles/MeuProjetoOpenGL.dir/glad.c.o CMakeFiles/MeuProjetoOpenGL.dir/pipeline.cpp.o CMakeFiles/MeuProjetoOpenGL.dir/math.cpp.o CMakeFiles/MeuProjetoOpenGL.dir/cubo.cpp.o CMakeFiles/MeuProjetoOpenGL.dir/scene.cpp.o -o MeuProjetoOpenGL  /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 -ldl 
