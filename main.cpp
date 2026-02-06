@@ -58,9 +58,9 @@ int main() {
 
     Cena cena = criaCena();
 
-    montaPipeline cam;
+    CameraConfig cam;
 
-    Matriz4x4 finalMatriz = pipeline(cam);
+    Matriz4x4 finalMatriz = calculaMatrizPipeline(cam);
 
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);

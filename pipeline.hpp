@@ -10,4 +10,15 @@ Matriz4x4 montaPipeline(
     float Near, float Far
 );
 
+struct CameraConfig {
+    Vec3 VRP;
+    Vec3 P;
+    Vec3 Y_up;
+    float xmin, xmax, ymin, ymax;
+    float umin, umax, vmin, vmax;
+    float Near, Far;
+};
+
+Matriz4x4 calculaMatrizPipeline(CameraConfig c);
+
 #endif

@@ -56,25 +56,17 @@ void transformPoint(Matriz4x4 m, float pin[4], float pout[4]) {
     }
 }
 
-int pipeline() {
-    // tornar editável pelo usuário
-    Vec3 VRP = {30, 40, 100};
-    Vec3 P = {1, 2, 1};
-    Vec3 Y_up = {0, 1, 0};
-    
-    double xmin = -10, xmax = 10, ymin = -8, ymax = 8;
-    double umin = 100, umax = 1000, vmin = 300, vmax = 900;
-    double Near = 20, Far = 160;
+Matriz4x4 calculaMatrizPipeline(CameraConfig c) {
 
-    Vec3 n = normalize(sub(VRP, P));
-    Vec3 u = normalize(cross(Y_up, n));
+    Vec3 n = normalize(sub(c.VRP, c.P));
+    Vec3 u = normalize(cross(c.Y_up, n));
     Vec3 v = cross(n, u);
 
     // Matriz A
     Matriz4x4 A = identidade();
-    A.m[0][3] = -VRP.x;
-    A.m[1][3] = -VRP.y;
-    A.m[2][3] = -VRP.z;
+    A.m[0][3] = -c.VRP.x;
+    A.m[1][3] = -c.VRP.y;
+    A.m[2][3] = -c.VRP.z;
 
     // Matriz B
     Matriz4x4 B = identidade();
@@ -84,21 +76,36 @@ int pipeline() {
 
     // Matriz P
     Matriz4x4 P_mat = identidade();
-    P_mat.m[2][2] = Far / (Far - Near);
-    P_mat.m[2][3] = -(Far * Near) / (Far - Near);
+    P_mat.m[2][2] = c.Far / (c.Far - c.Near);
+    P_mat.m[2][3] = -(c.Far * c.Near) / (c.Far - c.Near);
     P_mat.m[3][2] = 1.0; 
     P_mat.m[3][3] = 0.0;
 
     // Matriz S
     Matriz4x4 S = identidade();
-    double scaleX = (umax - umin) / (xmax - xmin);
-    double scaleY = (vmax - vmin) / (ymax - ymin);
+    double scaleX = (c.umax - c.umin) / (c.xmax - c.xmin);
+    double scaleY = (c.vmax - c.vmin) / (c.ymax - c.ymin);
     S.m[0][0] = scaleX;
-    S.m[0][3] = umin - (scaleX * xmin);
+    S.m[0][3] = c.umin - (scaleX * c.xmin);
     S.m[1][1] = -scaleY; // Inversão Y 
-    S.m[1][3] = vmax + (scaleY * ymin);
+    S.m[1][3] = c.vmax + (scaleY * c.ymin);
 
-    Matriz4x4 finalMatriz = multiply(S, multiply(P_mat, multiply(B, A)));
+    return multiply(S, multiply(P_mat, multiply(B, A)));
+}
+
+int pipeline() {
+    CameraConfig cam;
+
+    // tornar editável pelo usuário
+    cam.VRP = {30, 40, 100};
+    cam.P = {1, 2, 1};
+    cam.Y_up = {0, 1, 0};
+    
+    cam.xmin = -10, cam.xmax = 10, cam.ymin = -8, cam.ymax = 8;
+    cam.umin = 100, cam.umax = 1000, cam.vmin = 300, cam.vmax = 900;
+    cam.Near = 20, cam.Far = 160;
+
+    Matriz4x4 finalMatriz = calculaMatrizPipeline(cam);
 
     // pontos para Transformar
     float pontos[5][4] = {
