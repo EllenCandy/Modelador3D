@@ -60,45 +60,65 @@ int main() {
 
     Cena cena = criaCena();
     CameraConfig cam;
+
+    cam.VRP = {30, 40, 100}; // posição da câmera
+    cam.P = {1, 2, 1};       // ponto para onde a câmera está olhando
+    cam.Y_up = {0, 1, 0};    // vetor que define a orientação "para cima" da câmera
+
+    // janela de visualização (window)
+    cam.xmin = -10; cam.xmax = 10;
+    cam.ymin = -8;  cam.ymax = 8;
+
+    // viewport
+    cam.umin = 0; cam.umax = W;
+    cam.vmin = 0; cam.vmax = H;
+
+    // planos de recorte
+    cam.Near = 20; cam.Far = 160;
+
+    // calcula matriz do pipeline
+    // (M_view * M_proj * M_viewport)
     Matriz4x4 finalMatriz = calculaMatrizPipeline(cam);
 
-    framebuffer[300][400][0] = 255;
+    // triângulo de teste
+    // 3 pontos no espaço do objeto (mundo)
+    Vec4 tri[3] = {
+        {-2, -1, 4, 1},
+        { 3, -2, 5, 1},
+        { 1,  3, 2, 1}
+    };
+
 
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
 
     // limpa framebuffer
     for(int y=0;y<H;y++)
-        for(int x=0;x<W;x++) {
-            framebuffer[y][x][0] = 0;
-            framebuffer[y][x][1] = 0;
-            framebuffer[y][x][2] = 0;
-        }
- 
-    // desenha cada cubo como 1 pixel
-    for (auto& obj : cena.objetos) {
- 
-        Vec4 centro = {0,0,0,1};
- 
-        Vec4 mundo = multVetor(obj.model, centro);
-        Vec4 tela  = multVetor(finalMatriz, mundo);
- 
-        if (tela.h != 0) {
-            tela.x /= tela.h;
-            tela.y /= tela.h;
-        }
- 
-        int x = (int)(tela.x);
-        int y = (int)(tela.y);
- 
-        if (x >= 0 && x < W && y >= 0 && y < H) {
-            framebuffer[y][x][0] = (unsigned char)(obj.material.r * 255);
-            framebuffer[y][x][1] = (unsigned char)(obj.material.g * 255);
-            framebuffer[y][x][2] = (unsigned char)(obj.material.b * 255);
-        }
-    }
+    for(int x=0;x<W;x++)
+        framebuffer[y][x][0] =
+        framebuffer[y][x][1] =
+        framebuffer[y][x][2] = 0;
 
-        glDrawPixels(W, H, GL_RGB, GL_UNSIGNED_BYTE, framebuffer);
+    // passa cada ponto pelo pipeline
+    Vec4 p0 = aplicaPipeline(finalMatriz, tri[0]);
+    Vec4 p1 = aplicaPipeline(finalMatriz, tri[1]);
+    Vec4 p2 = aplicaPipeline(finalMatriz, tri[2]);
+
+    auto plot = [&](int x,int y){
+        if(x>=0&&x<W&&y>=0&&y<H){
+            framebuffer[y][x][0]=255;
+            framebuffer[y][x][1]=255;
+            framebuffer[y][x][2]=255;
+        }
+    };
+
+    // desenha os pixels correspondentes
+    plot((int)p0.x, (int)p0.y);
+    plot((int)p1.x, (int)p1.y);
+    plot((int)p2.x, (int)p2.y);
+
+    glDrawPixels(W, H, GL_RGB, GL_UNSIGNED_BYTE, framebuffer);
+
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -107,32 +127,21 @@ int main() {
 
     glfwTerminate();
 
-/*
-    inicializaJanela(largura, altura);
-    inicializaBuffers(largura, altura);
-
-    std::vector<Cubo> cena = criaCena();
-
-    Camera cam = configuraCamera(VRP, P, Y_up, Near, Far, window, viewport);
-
-    bool rodando = true;
-
-    while (rodando) {
-        limpaBuffers();
-
-        for (cada cubo da cena) {
-           M_model = calculaModel(cubo);
-
-           for (cada face do cubo) {
-               transformaVertices();
-               rasterizacao();
-           }
-      }
-
-      desenhaFramebuffer();
-    }
-*/
-
 return 0;
 
 }
+
+// como vamos fazer a interação do usuário?
+
+/*
+teclado
+mouse
+menus
+
+pensando aki:
+posição da camera = setas
+luz = mouse
+material = menu
+transformações = menu
+
+*/

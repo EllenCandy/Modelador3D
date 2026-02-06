@@ -95,6 +95,17 @@ Matriz4x4 calculaMatrizPipeline(CameraConfig c) {
 
 Matriz4x4 calculaMatrizPipeline(CameraConfig c);
 
+Vec4 aplicaPipeline(Matriz4x4 M, Vec4 p) {
+    Vec4 r = multVetor(M, p);
+    if (r.h != 0) {
+        r.x /= r.h;
+        r.y /= r.h;
+        r.z /= r.h;
+    }
+    return r;
+}
+
+
 /*
 int pipeline() {
     CameraConfig cam;

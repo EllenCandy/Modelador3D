@@ -21,4 +21,6 @@ struct CameraConfig {
 
 Matriz4x4 calculaMatrizPipeline(CameraConfig c);
 
+Vec4 aplicaPipeline(Matriz4x4 M, Vec4 p);
+
 #endif
