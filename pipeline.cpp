@@ -30,6 +30,50 @@ Vec3 cross(Vec3 a, Vec3 b) {
     return {a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x};
 }
 */
+static float edgeFunction(float ax, float ay, float bx, float by, float cx, float cy){ // produto vetorial
+    return (cx - ax) * (by - ay) - (cy - ay) * (bx - ax);
+}
+
+void rasterizaTriangulo(
+    Vec4 a, Vec4 b, Vec4 c,
+    unsigned char framebuffer[][800][3],
+    int W, int H)
+{
+    // Bounding box
+    float minX = std::min(a.x, std::min(b.x, c.x));
+    float maxX = std::max(a.x, std::max(b.x, c.x));
+    float minY = std::min(a.y, std::min(b.y, c.y));
+    float maxY = std::max(a.y, std::max(b.y, c.y));
+
+    int xmin = std::max(0, (int)std::floor(minX));
+    int xmax = std::min(W - 1, (int)std::ceil (maxX));
+    int ymin = std::max(0, (int)std::floor(minY));
+    int ymax = std::min(H - 1, (int)std::ceil (maxY));
+
+
+    // Área total do triângulo
+    float area = edgeFunction(a.x, a.y, b.x, b.y, c.x, c.y);
+    if (area == 0) return; // degenerado
+
+    // Rasterização
+    for (int y = ymin; y <= ymax; y++) {
+        for (int x = xmin; x <= xmax; x++) {
+
+            float w0 = edgeFunction(b.x, b.y, c.x, c.y, x + 0.5f, y + 0.5f);
+            float w1 = edgeFunction(c.x, c.y, a.x, a.y, x + 0.5f, y + 0.5f);
+            float w2 = edgeFunction(a.x, a.y, b.x, b.y, x + 0.5f, y + 0.5f);
+
+            // Teste ponto dentro do triângulo
+            if ((w0 >= 0 && w1 >= 0 && w2 >= 0) ||
+                (w0 <= 0 && w1 <= 0 && w2 <= 0)) {
+
+                framebuffer[y][x][0] = 255;
+                framebuffer[y][x][1] = 255;
+                framebuffer[y][x][2] = 255;
+            }
+        }
+    }
+}
 
 //multiplicacao de matrizes (R = A * B)
 Matriz4x4 multiply(Matriz4x4 a, Matriz4x4 b) {

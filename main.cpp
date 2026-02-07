@@ -61,10 +61,17 @@ int main() {
     Cena cena = criaCena();
     CameraConfig cam;
 
-    cam.VRP = {30, 40, 100}; // posição da câmera
-    cam.P = {1, 2, 1};       // ponto para onde a câmera está olhando
-    cam.Y_up = {0, 1, 0};    // vetor que define a orientação "para cima" da câmera
+    //cam.VRP = {30, 40, 100}; // posição da câmera
+    //cam.P = {1, 2, 1};       // ponto para onde a câmera está olhando
+    //cam.Y_up = {0, 1, 0};    // vetor que define a orientação "para cima" da câmera
 
+    cam.VRP = {0, 0, 50};
+    cam.P   = {0, 0, 0};
+    cam.Y_up = {0, 1, 0};
+
+    cam.Near = 10;
+    cam.Far  = 200;
+    
     // janela de visualização (window)
     cam.xmin = -10; cam.xmax = 10;
     cam.ymin = -8;  cam.ymax = 8;
@@ -74,20 +81,21 @@ int main() {
     cam.vmin = 0; cam.vmax = H;
 
     // planos de recorte
-    cam.Near = 20; cam.Far = 160;
+    //cam.Near = 20; cam.Far = 160;
 
     // calcula matriz do pipeline
-    // (M_view * M_proj * M_viewport)
+    // (M_view * M_proj * M_viewport)'
     Matriz4x4 finalMatriz = calculaMatrizPipeline(cam);
 
     // triângulo de teste
     // 3 pontos no espaço do objeto (mundo)
     Vec4 tri[3] = {
-        {-2, -1, 4, 1},
-        { 3, -2, 5, 1},
-        { 1,  3, 2, 1}
+    {-5, -5, 50, 1},
+    { 5, -5, 50, 1},
+    { 0,  5, 50, 1}
     };
 
+    Cubo cubo = criaCubo();
 
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
@@ -99,23 +107,26 @@ int main() {
         framebuffer[y][x][1] =
         framebuffer[y][x][2] = 0;
 
-    // passa cada ponto pelo pipeline
-    Vec4 p0 = aplicaPipeline(finalMatriz, tri[0]);
-    Vec4 p1 = aplicaPipeline(finalMatriz, tri[1]);
-    Vec4 p2 = aplicaPipeline(finalMatriz, tri[2]);
+    for (const Face& f : cubo.faces) {
 
-    auto plot = [&](int x,int y){
-        if(x>=0&&x<W&&y>=0&&y<H){
-            framebuffer[y][x][0]=255;
-            framebuffer[y][x][1]=255;
-            framebuffer[y][x][2]=255;
-        }
-    };
+        Vec4 v0 = cubo.vertices[f.v1];
+        Vec4 v1 = cubo.vertices[f.v2];
+        Vec4 v2 = cubo.vertices[f.v3];
 
-    // desenha os pixels correspondentes
-    plot((int)p0.x, (int)p0.y);
-    plot((int)p1.x, (int)p1.y);
-    plot((int)p2.x, (int)p2.y);
+        float escala = 10.0f;
+
+        v0.x *= escala; v0.y *= escala; v0.z *= escala;
+        v1.x *= escala; v1.y *= escala; v1.z *= escala;
+        v2.x *= escala; v2.y *= escala; v2.z *= escala;
+
+
+        Vec4 p0 = aplicaPipeline(finalMatriz, v0);
+        Vec4 p1 = aplicaPipeline(finalMatriz, v1);
+        Vec4 p2 = aplicaPipeline(finalMatriz, v2);
+
+        rasterizaTriangulo(p0, p1, p2, framebuffer, W, H);
+    }
+
 
     glDrawPixels(W, H, GL_RGB, GL_UNSIGNED_BYTE, framebuffer);
 

@@ -23,4 +23,6 @@ Matriz4x4 calculaMatrizPipeline(CameraConfig c);
 
 Vec4 aplicaPipeline(Matriz4x4 M, Vec4 p);
 
+void rasterizaTriangulo( Vec4 a, Vec4 b, Vec4 c, unsigned char framebuffer[][800][3], int W, int H);
+
 #endif
