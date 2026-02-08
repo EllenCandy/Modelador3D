@@ -1,7 +1,5 @@
 // André Ellen Rafael
 
-// #include <glad/glad.h>
-
 #include <iostream>
 
 #include <GLFW/glfw3.h>
@@ -56,7 +54,8 @@ int main() {
     const int W = 800;
     const int H = 600;
 
-    unsigned char framebuffer[H][W][3];
+    static unsigned char framebuffer[H][W][3];
+    static float zBuffer[H][W];
 
     Cena cena = criaCena();
     CameraConfig cam;
@@ -101,11 +100,14 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
 
     // limpa framebuffer
-    for(int y=0;y<H;y++)
-    for(int x=0;x<W;x++)
-        framebuffer[y][x][0] =
-        framebuffer[y][x][1] =
-        framebuffer[y][x][2] = 0;
+    for(int y=0;y<H;y++) {
+        for(int x=0;x<W;x++) {
+            framebuffer[y][x][0] =
+            framebuffer[y][x][1] =
+            framebuffer[y][x][2] = 0;
+            zBuffer[y][x] = 1.0f;
+        }
+    }
 
     for (const Face& f : cubo.faces) {
 
@@ -124,9 +126,8 @@ int main() {
         Vec4 p1 = aplicaPipeline(finalMatriz, v1);
         Vec4 p2 = aplicaPipeline(finalMatriz, v2);
 
-        rasterizaTriangulo(p0, p1, p2, framebuffer, W, H);
+        rasterizaTriangulo(p0, p1, p2, framebuffer, zBuffer, W, H);
     }
-
 
     glDrawPixels(W, H, GL_RGB, GL_UNSIGNED_BYTE, framebuffer);
 

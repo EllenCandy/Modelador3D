@@ -7,29 +7,6 @@
 
 using namespace std;
 
-/*
-struct Matriz4x4 {
-    double m[4][4] = {0};
-    
-    static Matriz4x4 identidade() {
-        Matriz4x4 res;
-        for(int i=0; i<4; i++) res.m[i][i] = 1.0;
-        return res;
-    }
-};
-*/
-
-/*funções matematicas de vetores
-Vec3 subtract(Vec3 a, Vec3 b) { return {a.x - b.x, a.y - b.y, a.z - b.z}; }
-float length(Vec3 v) { return sqrt(v.x*v.x + v.y*v.y + v.z*v.z); }
-Vec3 normalize(Vec3 v) {
-    float len = length(v);
-    return {v.x/len, v.y/len, v.z/len};
-}
-Vec3 cross(Vec3 a, Vec3 b) {
-    return {a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x};
-}
-*/
 static float edgeFunction(float ax, float ay, float bx, float by, float cx, float cy){ // produto vetorial
     return (cx - ax) * (by - ay) - (cy - ay) * (bx - ax);
 }
@@ -37,6 +14,7 @@ static float edgeFunction(float ax, float ay, float bx, float by, float cx, floa
 void rasterizaTriangulo(
     Vec4 a, Vec4 b, Vec4 c,
     unsigned char framebuffer[][800][3],
+    float zBuffer[][800],
     int W, int H)
 {
     // Bounding box
@@ -50,7 +28,6 @@ void rasterizaTriangulo(
     int ymin = std::max(0, (int)std::floor(minY));
     int ymax = std::min(H - 1, (int)std::ceil (maxY));
 
-
     // Área total do triângulo
     float area = edgeFunction(a.x, a.y, b.x, b.y, c.x, c.y);
     if (area == 0) return; // degenerado
@@ -63,13 +40,20 @@ void rasterizaTriangulo(
             float w1 = edgeFunction(c.x, c.y, a.x, a.y, x + 0.5f, y + 0.5f);
             float w2 = edgeFunction(a.x, a.y, b.x, b.y, x + 0.5f, y + 0.5f);
 
-            // Teste ponto dentro do triângulo
-            if ((w0 >= 0 && w1 >= 0 && w2 >= 0) ||
-                (w0 <= 0 && w1 <= 0 && w2 <= 0)) {
+            if ((w0 >= 0 && w1 >= 0 && w2 >= 0) || (w0 <= 0 && w1 <= 0 && w2 <= 0)) {
+                float b0 = w0 / area;
+                float b1 = w1 / area;
+                float b2 = w2 / area;
 
-                framebuffer[y][x][0] = 255;
-                framebuffer[y][x][1] = 255;
-                framebuffer[y][x][2] = 255;
+                float z = b0 * a.z + b1 * b.z + b2 * c.z;
+
+                if (z < zBuffer[y][x]) {
+                    zBuffer[y][x] = z;
+
+                    framebuffer[y][x][0] = 255;
+                    framebuffer[y][x][1] = 255;
+                    framebuffer[y][x][2] = 255;
+                }
             }
         }
     }
@@ -148,42 +132,3 @@ Vec4 aplicaPipeline(Matriz4x4 M, Vec4 p) {
     }
     return r;
 }
-
-
-/*
-int pipeline() {
-    CameraConfig cam;
-
-    // tornar editável pelo usuário
-    cam.VRP = {30, 40, 100};
-    cam.P = {1, 2, 1};
-    cam.Y_up = {0, 1, 0};
-    
-    cam.xmin = -10, cam.xmax = 10, cam.ymin = -8, cam.ymax = 8;
-    cam.umin = 0, cam.umax = 800, cam.vmin = 0, cam.vmax = 600;
-    cam.Near = 20, cam.Far = 160;
-
-    Matriz4x4 finalMatriz = calculaMatrizPipeline(cam);
-
-    // pontos para Transformar
-    float pontos[5][4] = {
-        {-2, -1, 4, 1},  // A
-        {3, -2, 5, 1},   // B
-        {4, -1, -2, 1},  // C
-        {-1, 0, -3, 1},  // D
-        {1, 6, 1, 1}     // E
-    };
-
-    cout << fixed << setprecision(4);
-    cout << " Resultado da transformação " << endl;
-    char labels[] = {'A', 'B', 'C', 'D', 'E'};
-    for(int i=0; i<5; i++) {
-        float out[4];
-        transformPoint(finalMatriz, pontos[i], out);
-        cout << labels[i] << ": (" << out[0] << ", " << out[1] << ", " << out[2] << ")" << endl;
-    }
-
-    return 0;
-}
-
-*/
