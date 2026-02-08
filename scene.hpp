@@ -10,7 +10,7 @@ struct Material {
     float Kd; //reflexão difusa
     float Ks; //reflexão especular
     float m;  //brilho (m)
-    float r, g, b;
+    float R, G, B;  //cor do material
 };
 
 struct Objeto {

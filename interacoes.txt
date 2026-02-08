@@ -1,0 +1,9 @@
+adicionar cubos na cena
+translação do cubo
+rotação do cubo
+escala do cubo
+mexer nos parâmetros da camera:
+window
+viewport (setas)
+luzes (mouse)
+materiais(Ka, Kd, Ks, n)
