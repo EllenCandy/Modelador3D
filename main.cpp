@@ -9,6 +9,8 @@
 #include "cubo.hpp"
 #include "scene.hpp"
 
+#define largura 1920
+#define altura 1079
 /*
 Inicializa
 
@@ -43,7 +45,7 @@ int main() {
         return -1;
     }
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "CG - Modelador 3D", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(largura, altura, "CG - Modelador 3D", NULL, NULL);
     if (!window) {
         glfwTerminate();
         return -1;
@@ -51,8 +53,8 @@ int main() {
 
     glfwMakeContextCurrent(window);
 
-    const int W = 800;
-    const int H = 600;
+    const int W = largura;
+    const int H = altura;
 
     static unsigned char framebuffer[H][W][3];
     static float zBuffer[H][W];

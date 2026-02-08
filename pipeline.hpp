@@ -1,6 +1,9 @@
 #ifndef PIPELINE_HPP
 #define PIPELINE_HPP
 
+#define largura 1920
+#define altura 1079
+
 #include "math.hpp"
 
 Matriz4x4 montaPipeline(
@@ -24,7 +27,7 @@ Matriz4x4 calculaMatrizPipeline(CameraConfig c);
 Vec4 aplicaPipeline(Matriz4x4 M, Vec4 p);
 
 void rasterizaTriangulo( Vec4 a, Vec4 b, Vec4 c, 
-    unsigned char framebuffer[][800][3], 
-    float zBuffer[][800], int W, int H);
+    unsigned char framebuffer[][largura][3], 
+    float zBuffer[][largura], int W, int H);
 
 #endif

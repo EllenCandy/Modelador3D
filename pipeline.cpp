@@ -5,6 +5,9 @@
 #include "pipeline.hpp"
 #include "math.hpp"
 
+#define largura 1920
+#define altura 1079
+
 using namespace std;
 
 static float edgeFunction(float ax, float ay, float bx, float by, float cx, float cy){ // produto vetorial
@@ -13,8 +16,8 @@ static float edgeFunction(float ax, float ay, float bx, float by, float cx, floa
 
 void rasterizaTriangulo(
     Vec4 a, Vec4 b, Vec4 c,
-    unsigned char framebuffer[][800][3],
-    float zBuffer[][800],
+    unsigned char framebuffer[][largura][3],
+    float zBuffer[][largura],
     int W, int H)
 {
     // Bounding box
