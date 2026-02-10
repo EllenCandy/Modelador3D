@@ -15,15 +15,15 @@ Cena criaCena() {
     // cubo 1
     Objeto o1;
     o1.mesh = &cuboBase;
-    // Adiciona escala de 10x antes da translação
-    o1.model = multiplica(translacao(-50, 50, 10), escala(10.0f, 10.0f, 10.0f));
+
+    o1.model = multiplica(translacao(-30, -15, 5), escala(10.0f, 10.0f, 10.0f));
     o1.material = mat1;
  
     // cubo 2
     Objeto o2;
     o2.mesh = &cuboBase;
-    // Adiciona escala de 10x antes da translação
-    o2.model = multiplica(translacao(50, 0, 0), escala(10.0f, 10.0f, 10.0f));
+
+    o2.model = multiplica(translacao(30, 15, 0), escala(10.0f, 10.0f, 10.0f));
     o2.material = mat2;
  
     c.objetos.push_back(o1);

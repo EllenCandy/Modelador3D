@@ -76,9 +76,9 @@ Matriz4x4 escala(float sx, float sy, float sz) {
     return res;
 }
 
-Vec3 add(Vec3 a, Vec3 b) {
-    return { a.x + b.x, a.y + b.y, a.z + b.z };
-}
+// Vec3 add(Vec3 a, Vec3 b) {
+//     return { a.x + b.x, a.y + b.y, a.z + b.z };
+// }
 
 Vec3 sub(Vec3 a, Vec3 b) {
     return { a.x - b.x, a.y - b.y, a.z - b.z };

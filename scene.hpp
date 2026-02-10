@@ -10,12 +10,12 @@ struct Material {
     float Kd; //reflexão difusa
     float Ks; //reflexão especular
     float m;  //brilho (m)
-    float R, G, B;  //cor do material
+    float r, g, b;
 };
 
 struct Objeto {
-    Cubo* mesh;       //aponta pro cubo base
-    Matriz4x4 model;  //matriz de transformação
+    Cubo* mesh;
+    Matriz4x4 model;
     Material material;
 };
 

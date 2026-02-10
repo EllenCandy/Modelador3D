@@ -10,16 +10,6 @@ struct Vec4 {
 };
 
 
-/*
-struct Material {
-    float Ka; //luz ambiente
-    float Kd; //reflexão difusa
-    float Ks; //reflexão especular
-    float m;  //brilho (m)
-    float r, g, b;
-};
-*/
-
 struct Matriz4x4 {
     float m[4][4];
 };
@@ -31,11 +21,10 @@ Vec4 multVetor(Matriz4x4 m, Vec4 v);
 Matriz4x4 translacao(float tx, float ty, float tz);
 Matriz4x4 rotacaoX(float angle);
 Matriz4x4 rotacaoY(float angle);
-Matriz4x4 rotacaoZ(float angle);
-Matriz4x4 escala(float s); 
+Matriz4x4 rotacaoZ(float angle); 
 Matriz4x4 escala(float sx, float sy, float sz);
 
-Vec3 add(Vec3 a, Vec3 b);
+// Vec3 add(Vec3 a, Vec3 b);
 Vec3 sub(Vec3 a, Vec3 b);
 float dot(Vec3 a, Vec3 b);
 Vec3 cross(Vec3 a, Vec3 b);

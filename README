@@ -1,0 +1,55 @@
+README
+ 
+# Trabalho Final de Computação Gráfica (2025) - Modelador 3D
+ 
+**Universidade Estadual do Oeste do Paraná (UNIOESTE)**
+**Curso:** Ciência da Computação
+**Disciplina:** Computação Gráfica
+**Professor:** Adair Santa Catarina
+ 
+---
+ 
+## Integrantes do Grupo
+* André Gustavo Franco
+* Ellen Cristini Schreiber Brzozoski
+* Rafael dos Santos
+ 
+---
+ 
+## Projeto
+ 
+Este projeto consiste na implementação de um modelador 3D elementar focado na renderização e manipulação de cubos. O software foi desenvolvido seguindo o pipeline gráfico de Alvy Ray Smith. 
+ 
+---
+ 
+## Pré-requisitos e Ambiente
+ 
+Para compilar e executar este projeto, é necessário o seguinte ambiente:
+ 
+* **Sistema Operacional:** Windows 10 ou 11.
+* **Compilador:** g++ versão 15.2.0
+* **Bibliotecas:**
+    * **GLFW** (Gerenciamento de janelas, OpenGL).
+    * **Dear ImGui** (Inclusa no código fonte na pasta `imGUI/`).
+ 
+---
+ 
+## Instalação do GLFW
+ 
+1.  Acesse o site oficial: [https://www.glfw.org/download.html](https://www.glfw.org/download.html).
+2.  Baixe os **binários pré-compilados para Windows** (Windows pre-compiled binaries)
+4.  Extraia o conteúdo do zip para uma pasta (neste trabalho chamada glfw), de modo que a estrutura final fique assim:
+    * `C:\glfw\include` (contém a pasta GLFW e os arquivos .h)
+    * `C:\glfw\lib-mingw-w64` (contém os arquivos .a e .dll)
+ 
+---
+ 
+## Compilar e Executar
+ 
+Abra o terminal na pasta raiz do projeto (onde está o arquivo `main.cpp`) e execute o seguinte comando completo:
+ 
+```powershell
+g++ main.cpp math.cpp pipeline.cpp cubo.cpp scene.cpp imGUI/imgui.cpp imGUI/imgui_draw.cpp imGUI/imgui_tables.cpp imGUI/imgui_widgets.cpp imGUI/imgui_demo.cpp imGUI/imgui_impl_glfw.cpp imGUI/imgui_impl_opengl3.cpp -I"imGUI" -I"C:/glfw/include" -L"C:/glfw/lib-mingw-w64" -lglfw3 -lopengl32 -lgdi32 -o modelador3d 
+ 
+
+.\modelador3d.exe

@@ -27,26 +27,3 @@ Cubo criaCubo() {
 
     return c;
 }
-
-/*
-ANOTAÇÃO PRA ELLEN FAZER ESSA PORCARIA
-
-vertices:
-0 = inferior esquerdo frontal
-1 = inferior direito frontal
-2 = superior direito frontal
-3 = superior esquerdo frontal
-4 = inferior esquerdo traseiro
-5 = inferior direito traseiro
-6 = superior direito traseiro
-7 = superior esquerdo traseiro
-
-normais:
-{0, 0, -1} = Face Frontal
-{0, 0, 1} = Face Traseira
-{-1, 0, 0} = Face Esquerda
-{1, 0, 0} = Face Direita
-{0, 1, 0} = Face Superior
-{0, -1, 0} = Face Inferior
-
-*/
